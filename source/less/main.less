@@ -1,0 +1,112 @@
+@import 'variaveis.less';
+
+@breakpointMobile: ~'(max-width: 767px)';
+@breakpointTablet: ~'(max-width: 1023px)';
+
+.display-set(@set) {
+    display: @set;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+}
+
+body {
+    background-color: @backColor;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: @headerColor;
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    .container {
+        .display-set(flex);
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+    }
+}
+
+.menu {
+    .display-set(flex);
+
+    li {
+        font-weight: bold;
+        margin-left: 24px;
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+}
+
+section {
+    padding: 56px 0;
+}
+
+.product {
+    margin-top: 40px;
+    .display-set(grid);
+    grid-template-columns: repeat(3, 32.66%);
+    column-gap: 1%;
+    row-gap: 4%;
+    width: 100%;
+
+    &-item img {
+        width: 100%;
+        border-radius: 16px;
+    }
+
+    &-button {
+        .display-set(block);
+        background-color: @buttonColor;
+        color: #fff;
+        text-align: center;
+        padding: 8px 0;
+        border-radius: 8px;
+        margin-top: 8px;
+        text-decoration: none;
+
+        &:hover {
+            background-color: @buttonHoverColor;
+        }
+    }
+
+}
+
+@media screen and (@breakpointTablet) {
+    .container {
+        max-width: 80%;
+    }
+
+    .product {
+        grid-template-columns: repeat(2, 48.5%);
+        column-gap: 3%;
+    }
+}
+
+@media screen and (@breakpointMobile) {
+    .product {
+        .display-set(block)
+    }
+
+    .product-item {
+        margin-bottom: 32px;
+    }
+}
